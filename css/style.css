@@ -25,17 +25,18 @@ body {
 }
 
 header {
-  margin-top: 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 9%;
-  background-color: transparent;
+  padding: 1.5rem 9%;
+  background-color: #191919;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
+  background: rgba(25, 25, 25, 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -99,7 +100,7 @@ nav a.active {
 
 section {
   min-height: 100vh;
-  padding: 5rem 9% 5rem;
+  padding: 10rem 9% 5rem;
 }
 
 .home {
@@ -201,7 +202,8 @@ span {
   top: 0;
   font-weight: 1000;
   animation: blink 0.7s step-end infinite;
-  left: 0; /* Start cursor inside the typing area */
+  left: 0;
+  /* Start cursor inside the typing area */
 }
 
 @keyframes blink {
