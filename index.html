@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <title>Portfolio</title>
+  <title>Portofolio</title>
 </head>
 
 <body>
@@ -20,7 +20,11 @@
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
-
+    <div class="menu-icon" id="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
   <section id="home" class="home">
     <div class="home-img">
@@ -142,7 +146,6 @@
       <div class="project-card">
         <div class="d-flex">
           <img src="image/court.png" alt="Booking Futsal Project" />
-          <img src="image/courtt.png" alt="Booking Futsal Project" />
         </div>
         <div class="project-content">
           <h3>Booking Lapangan Futsal</h3>
@@ -301,39 +304,72 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-      /* ================= TYPING EFFECT ================= */
+      /* ================= BURGER MENU ================= */
+      const menuIcon = document.getElementById("menu-icon");
+      const navbar = document.getElementById("navbar");
+      const navLinks = document.querySelectorAll("nav a");
+
+      menuIcon.addEventListener("click", () => {
+        menuIcon.classList.toggle("active");
+        navbar.classList.toggle("active");
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          menuIcon.classList.remove("active");
+          navbar.classList.remove("active");
+        });
+      });
+
+      /* ================= TYPING TEXT EFFECT ================= */
       const typingText = document.querySelector(".typing-text span");
       const cursor = document.querySelector(".cursor");
-      const words = ["Backend Developer", "Frontend Developer", "Flutter Developer"];
+
+      const words = [
+        "Backend Developer",
+        "Frontend Developer",
+        "Flutter Developer"
+      ];
+
       let wordIndex = 0;
       let charIndex = 0;
       let isDeleting = false;
 
+      const typingSpeed = 80;
+      const deletingSpeed = 50;
+      const pauseAfterType = 1200;
+
       function typeEffect() {
         const currentWord = words[wordIndex];
-        const displayedText = isDeleting
-          ? currentWord.substring(0, charIndex--)
-          : currentWord.substring(0, charIndex++);
 
-        typingText.textContent = displayedText;
+        if (!isDeleting) {
+          typingText.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === currentWord.length) {
+            setTimeout(() => (isDeleting = true), pauseAfterType);
+          }
+        } else {
+          typingText.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+
+          if (charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+          }
+        }
+
         cursor.style.left = `${typingText.offsetWidth}px`;
 
-        if (!isDeleting && charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 2000);
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(typeEffect, 500);
-        } else {
-          setTimeout(typeEffect, isDeleting ? 100 : 200);
-        }
+        setTimeout(
+          typeEffect,
+          isDeleting ? deletingSpeed : typingSpeed
+        );
       }
 
       typeEffect();
 
       /* ================= NAV ACTIVE ON SCROLL ================= */
-      const navLinks = document.querySelectorAll(".nav-link");
       const sections = document.querySelectorAll("section");
       const headerHeight = document.querySelector("header").offsetHeight;
 
