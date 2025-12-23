@@ -395,6 +395,27 @@ span {
   transform: scale(1.15);
 }
 
+@media (max-width: 768px) {
+  .skills {
+    padding: 6rem 5%;
+  }
+
+  .skills .skills-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills .skills-title {
+    font-size: 2.4rem;
+  }
+
+  .service-item {
+    padding: 2rem;
+  }
+}
+
+
 /* ===================== EXPERIENCE SECTION ===================== */
 .experience {
   padding: 10rem 9% 5rem;
