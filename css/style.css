@@ -321,8 +321,8 @@ span {
   font-size: 1.4rem;
 }
 
-/* ===================== SERVICES SECTION ===================== */
-.services {
+/* ===================== skills SECTION ===================== */
+.skills {
   display: flex;
   gap: 3rem;
   justify-content: center;
@@ -330,7 +330,7 @@ span {
   flex-wrap: wrap;
 }
 
-.services-title {
+.skills-title {
   width: 100%;
   text-align: center;
   font-size: 4rem;
@@ -341,6 +341,15 @@ span {
   flex: 1 1 30%;
   max-width: 30%;
   text-align: center;
+  padding: 25px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .service-icon {
@@ -352,12 +361,38 @@ span {
 .service-item h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.service-item:hover h2 {
+  color: #4B9DA9;
 }
 
 .service-item p {
   font-size: 1.6rem;
   line-height: 1.5;
   color: #bbb;
+}
+
+.service-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* SVG icon */
+.service-icon svg,
+.service-icon img {
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+  color: #4B9DA9;
+}
+
+.service-item:hover .service-icon svg,
+.service-item:hover .service-icon img {
+  transform: scale(1.15);
 }
 
 /* ===================== EXPERIENCE SECTION ===================== */
@@ -385,12 +420,24 @@ span {
   border-radius: 15px;
   max-width: 500px;
   text-align: left;
+  transition: all 0.35s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-10px);
+  background: #2a2a2a;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .experience-item img {
   width: 100%;
   border-radius: 20px;
   margin-bottom: 2.5rem;
+  transition: transform 0.4s ease;
+}
+
+.experience-item:hover img {
+  transform: scale(1.05);
 }
 
 .edu-year {
@@ -438,6 +485,13 @@ span {
   border-radius: 15px;
   max-width: 500px;
   text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.education-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .education-item h2 {
